@@ -30,6 +30,14 @@ describe('Query Route', () => {
     expect(response.body).to.have.property('error').that.includes('Duplicate values found')
   })
 
+  it('GET /query with searchTerm longer than the limit should return a 400 error', async () => {
+  	const queryArg = '?searchTerm=' + "a".repeat(appConfig.QUERY_ARG_KEYWORD_LENGTH_LIMIT+1);
+    const response = await request.get(`/query${queryArg}`)
+
+    expect(response.status).to.equal(400)
+    expect(response.body).to.have.property('error').that.includes('Keyword exceeds max length')
+  })
+
   it('GET /query with more than 3 searchTerms should return a 400 error', async () => {
   	let queryArg = ""
   	for (let i =0; i <= appConfig.QUERY_ARG_LIMIT;i++){
