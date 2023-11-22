@@ -26,6 +26,11 @@ router.get('/', async (req, res) => {
   if (searchTerms.length !== _.uniq(searchTerms).length) {
     return res.status(400).json({ error: `Duplicate values found for path argument \`searchTerm\`` })
   }
+  for (let term of searchTerms){
+    if (term.length>appConfig.QUERY_ARG_KEYWORD_LENGTH_LIMIT){
+      return res.status(400).json({ error: `Keyword exceeds max length ${appConfig.QUERY_ARG_KEYWORD_LENGTH_LIMIT} for path argument \`searchTerm\`` })
+    }
+  }
 
   try {
     const searchResults = await search(searchTerms) // Assuming the search function is defined somewhere

@@ -31,20 +31,22 @@ To make the service production ready, use the following improvements:
 
 2. Testing: Add Invalid API KEY tests, expired API Key tests. Current, integration tests would already fail but should also have negative test cases for end-to-end.
 
-3. Logging: Add log rotation and write to file to make monitoring/debugging easier in production.
+3. Performance Tests: Add performance tests and define benchmarks for latency and thoroughput.
 
-4. Error Handling: Enhance error handling to provide meaningful responses and log errors appropriately.
+4. Logging: Add log rotation and write to file to make monitoring/debugging easier in production.
 
-5. Environment Variables: Use environment variables for secret values such as the Giphy API key instead of hardcoding them.
+5. Error Handling: Enhance error handling to provide meaningful responses and log errors appropriately.
 
-6. Rate Limiting: Implement rate limiting to prevent abuse and ensure fair usage.
+6. Environment Variables: Use environment variables for secret values such as the Giphy API key instead of hardcoding them.
 
-7. Caching: Reduce usage on the Giphy API which can also improve response time. Might be costlier to maintain cache so it is important to do cost analysis vs api usage.
+7. Rate Limiting: Implement rate limiting to prevent abuse.
 
-8. Documentation: Provide a formal API documentation that has request/response payloads, error codes, url params, headers.
+8. Caching: Reduce usage on the Giphy API which can also improve response time. Might be costlier to maintain cache so it is important to do cost analysis vs api usage.
 
-9. Scaling: Since this only runs on one instance, we can introduce a loadbalancer to have multiple instances of this application to scale horizontally once we exceeded our bandwidth on network traffic.
+9. Documentation: Provide a formal API documentation that has request/response payloads, error codes, url params, headers.
 
-10. Monitoring: Set up monitoring tools specifically for network usage. Also add alerts and perhaps integrate auto-scaling to handle peak hours and scale down during off-hours.
+10. Scaling: Since this only runs on one instance, we can introduce a loadbalancer to have multiple instances of this application to scale horizontally once we exceeded our bandwidth on network traffic.
 
-11. Knowledge Transfer: Make sure that more than one engineer knows how the system works. Create a slide deck for a highlevel architecture.
+11. Monitoring: Set up monitoring tools specifically for network usage. Also add alerts and perhaps integrate auto-scaling to handle peak hours and scale down during off-hours.
+
+12. Knowledge Transfer: Make sure that more than one engineer knows how the system works. Create a slide deck for a highlevel architecture.
